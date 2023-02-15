@@ -39,6 +39,14 @@ const RebootWifi = () => {
       const page = await context.newPage();
       const mainframe = await page.mainFrame();
 
+      page.on("dialog", async (dialog) => {
+        try {
+          await dialog.accept();
+        } catch (e) {
+          console.log(e);
+        }
+      });
+
       const routerPage = async () => {
         await page.goto(formData.url + "/login_pldt.asp", {
           waitUntil: "networkidle0",
@@ -82,20 +90,21 @@ const RebootWifi = () => {
           await Promise.all([
             childframe.waitForNavigation(),
             childframe.$eval(
-              logoutBtn,
+              rebootBtn,
               (element) => {
                 console.log(element.value);
                 // element.click;
+                rebootConfirm();
               },
-              setSuccess("Rebooting router."),
+              setSuccess("Rebooting router.")
               // Logout
               // page.evaluate(() => {
               //   document.querySelector("#headerLogoutSpan").click();
               // })
             ),
           ]);
-          await page.close();
-          await browser.close();
+          // await page.close();
+          // await browser.close();
         }
 
         // If error
