@@ -21,8 +21,9 @@ yarn start
 
 Note:
 ```
-// uncomment 
-element.click on `/client/src/rebootrouter.js` file Line: 88
+// uncomment on /src/rebootrouter.js
+Line: 96 
+// rebootConfirm();
 ```
 
 

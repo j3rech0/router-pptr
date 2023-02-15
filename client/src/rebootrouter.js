@@ -93,18 +93,13 @@ const RebootWifi = () => {
               rebootBtn,
               (element) => {
                 console.log(element.value);
-                // element.click;
-                rebootConfirm();
+                // rebootConfirm();
               },
               setSuccess("Rebooting router.")
-              // Logout
-              // page.evaluate(() => {
-              //   document.querySelector("#headerLogoutSpan").click();
-              // })
+              
             ),
           ]);
-          // await page.close();
-          // await browser.close();
+         
         }
 
         // If error
